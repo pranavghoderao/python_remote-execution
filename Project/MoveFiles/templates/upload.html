@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Enter Details...!</h3>
+    <form method="POST" action="/upload" enctype="multipart/form-data">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td>Title:</td>
+                    <td>{{ form.title }}</td>
+                </tr>
+                <tr>
+                 <td>Description:</td>
+                 <td>{{ form.description }}</td>
+             </tr>
+             <tr>
+                 <td>Document:</td>
+                 <td>{{ form.document }}</td>
+             </tr>
+             <tr>
+                 <td><input type="submit" value="Click to Upload.."></td>
+                
+             </tr>
+            </table>    
+    </form>
+    <br>
+    <center>
+        <a href="/list">Get All Uploads...!</a>
+    </center>
+</body>
+</html>
