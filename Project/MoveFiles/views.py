@@ -6,7 +6,7 @@ from MoveFiles.models import Documents
 from MoveFiles.utils import connectServer
 from MoveFiles.run_script import execution
 
-
+import os
 
 # Create your views here.
 def upload(request):
@@ -40,8 +40,15 @@ def execute(request,id):
 
     par = util.connect()
     p = util.loadScript(id,par)
-    rest =  ex.runScriptPython(id,par,p)
 
+    ext = os.path.splitext(p)
+    print(ext[1])
+    if (ext[1] == ".py"):
+        rest =  ex.runScriptPython(id,par,p)
+    if (ext[1] == ".sh"):
+        rest = ex.runScriptShell(id,par,p)
+
+    
     return render(request,"result.html",{'res':rest})
 
 

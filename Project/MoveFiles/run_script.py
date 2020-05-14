@@ -5,7 +5,7 @@ from subprocess import Popen,PIPE,STDOUT
 class execution():
 
     def runScriptPython(self,id,par,p):
-        
+        print("inside python..")
         cmd = " cd /home/vagrant/scripts; python {}".format(p)
         
         try:
@@ -21,9 +21,11 @@ class execution():
         return result
 
     def runScriptShell(self,id,par,p):
-        
-        cmd =" cd /home/vagrant/scripts; chmod +x {}; ./{}".format(p)
-
+        print("inside shell..")
+        print (p)
+        #cmd =" cd /home/vagrant/scripts; chmod +x {}; ./{}".format(p,p)
+        cmd = f" cd /home/vagrant/scripts ; chmod +x {p} ; ./{p}"
+        print(cmd)
         try:
             stdin,stdout,stderr=par.exec_command(cmd)
             op=stdout.readlines()
