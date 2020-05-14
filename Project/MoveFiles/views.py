@@ -51,6 +51,11 @@ def execute(request,id):
     
     return render(request,"result.html",{'res':rest})
 
+def run(request):
+    if request.method == "POST":
+        script_name = request.POST.get('scriptname')
+        print(script_name)
+
 
 
 

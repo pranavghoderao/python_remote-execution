@@ -6,5 +6,6 @@ urlpatterns = [
     path('list',views.list,name="show"),
     path('delete/<int:id>',views.delete,name="delete"),
     path('execute/<int:id>',views.execute,name="execute"),
+    path('run',views.run,name="run"),
 ]
 

@@ -3,9 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../static/css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
+    <link href="../static/css/bootstrap-grid.css" rel="stylesheet" type="text/css" media="all">
+    <link href="../static/css/bootstrap-grid.min.css" rel="stylesheet" type="text/css" media="all">
     <title>List</title>
 </head>
 <body>
+    <div>
     <h3>Details and associated Actions..!</h3><br>
     <table border="1" style="padding: 2% ;margin: 1%;">
         <tr>
@@ -33,5 +38,18 @@
     <center>
         <a href="/upload">Add new Document...!</a>
     </center>
+
+    <br>
+    <h3>Execute Scripts available on the Server...!</h3>
+    
+    <form method="POST" action="/run" enctype="multipart/form-data" class="form-inline">
+        {% csrf_token %}
+        <div class="form-group mx-sm-3 mb-2">
+          <label for="inputPassword2" class="sr-only">Script Name</label>
+          <input type="text" class="form-control" name="scriptname" placeholder="Script Name">
+        </div>
+        <button type="submit" class="btn btn-primary mb-2">Run</button>
+      </form>
+    </div>
 </body>
 </html>
