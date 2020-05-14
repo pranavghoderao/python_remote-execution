@@ -46,7 +46,7 @@
         {% csrf_token %}
         <div class="form-group mx-sm-3 mb-2">
           <label for="inputPassword2" class="sr-only">Script Name</label>
-          <input type="text" class="form-control" name="scriptname" placeholder="Script Name">
+          <input type="text" class="form-control" name="scriptname" placeholder="Script Name" value="{{scriptname}}">
         </div>
         <button type="submit" class="btn btn-primary mb-2">Run</button>
       </form>

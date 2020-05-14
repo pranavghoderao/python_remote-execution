@@ -37,3 +37,39 @@ class execution():
             result = {"status":"Failed","output":str(e)}
 
         return result
+
+    def remoteRunShell(self,loc,scriptname,par):
+        print("inside remoteRunPython..")
+
+        cmd= f" cd {loc}; chmod +x {scriptname}; ./{scriptname}"
+        print(cmd)
+        try:
+            stdin,stdout,stderr=par.exec_command(cmd)
+            op=stdout.readlines()
+            op=" ".join(op)
+            print(op)
+            result = {"status":"Success","output":str(op)}
+        
+        except Exception as e:
+            result = {"status":"Failed","output":str(e)}
+
+        return result
+
+    def remoteRunPython(self,loc,scriptname,par):
+        print("inside remoteRunShell..")
+
+        cmd= f" cd {loc}; python {scriptname} "
+        print(cmd)
+        try:
+            stdin,stdout,stderr=par.exec_command(cmd)
+            op=stdout.readlines()
+            op=" ".join(op)
+            print(op)
+            result = {"status":"Success","output":str(op)}
+        
+        except Exception as e:
+            result = {"status":"Failed","output":str(e)}
+
+        return result
+
+

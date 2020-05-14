@@ -55,6 +55,21 @@ def run(request):
     if request.method == "POST":
         script_name = request.POST.get('scriptname')
         print(script_name)
+        
+        util = connectServer()
+        par = util.connect()
+        ex = execution()
+
+        loc = "/home/vagrant/scripts/"
+        ext = os.path.splitext(script_name)
+        print(ext[1])
+        if (ext[1] == ".py"):
+            rest =  ex.remoteRunPython(loc,script_name,par)
+        if (ext[1] == ".sh"):
+            rest = ex.remoteRunShell(loc,script_name,par)
+
+    return render(request,"result.html",{'res':rest})
+        
 
 
 
