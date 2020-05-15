@@ -11,10 +11,13 @@
     <title>remote</title>
 </head>
 
-<body>
-    <div class="container">
-        <div class="row">
-            <div class="col">
+<body class="bg-dark text-info">
+    <div class="container ">
+        <div class="row ">
+            <div class="col align-content-between position-relative">
+                <br>
+                <br>
+            
                 <h3>Execute Scripts available on the Server...!</h3>
 
                 <form method="POST" action="/run" enctype="multipart/form-data" class="form-inline">
@@ -27,11 +30,14 @@
                     <button type="submit" class="btn btn-primary mb-2">Run</button>
                 </form>
             </div>
-            <div class="col">
+            <div class="col align-content-between position-relative">
+                <br>
+                <br>
+            
                 <h3>Scripts available on server to execute..</h3>
-                <ul class="list-group list-group-flush">
+                <ul class="list-group list-group-flush ">
                     {% for f in fnames %}
-                    <li class="list-group-item">{{ f }}</li>
+                    <li class="list-group-item bg-dark">{{ f }}</li>
                     {% endfor %}
                 </ul>
             </div>

@@ -9,35 +9,41 @@
     <link href="../static/css/bootstrap-grid.min.css" rel="stylesheet" type="text/css" media="all">
     <title>List</title>
 </head>
-<body>
-    <div>
-    <h3>Details and associated Actions..!</h3><br>
-    <table border="1" style="padding: 2% ;margin: 1%;">
-        <tr>
+<body class="bg-dark text-info">
+    <br>
+    <br>
+    <h3 class="align-middle">Details and associated Actions..!</h3><br>
+    <div class="table-responsive">
+    <table class="table table-borderless">
+        <thead class="text-info">
+        <tr >
             <th>Title</th>
             <th>Description</th>
-            <th>Documents</th>
+            <th>View</th>
             <th>Delete</th>
             <th>Execute</th>            
         </tr>
+       </thead>
+       <tbody class="text-info">
         {% for d in doc %}
         <tr>
             <td>{{ d.title }}</td>
             <td>{{ d.description }}</td>
-            <td><a href="{{ d.document.url }}" target="blank"><span>view</span></a></td>
+            <td><a href="{{ d.document.url }}" target="blank" class="btn btn-outline-info"><span>view</span></a></td>
             <td>
-                <a href="/delete/{{ d.id }}"><span>Delete..</span></a>
+                <a href="/delete/{{ d.id }}" class="btn btn-outline-info"><span>Delete..</span></a>
             </td> 
             <td>
-                <a href="/execute/{{ d.id }}"><span>Execute..</span></a>
+                <a href="/execute/{{ d.id }}" class="btn btn-outline-info"><span>Execute..</span></a>
             </td>    
         </tr>
         {% endfor %}
+        <tbody>
     </table>
     <br>
     <center>
-        <a href="/upload">Add new Document...!</a><br>
-        <a href="/remoterun">Clickhere..!</a>
+        <a href="/upload" class="btn btn-outline-info ">Add new Document...!</a>
+        <a href="/remoterun" class="btn btn-outline-info " >Clickhere..!</a>
     </center>
 
     

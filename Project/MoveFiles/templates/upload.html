@@ -9,11 +9,15 @@
     <link href="../static/css/bootstrap-grid.min.css" rel="stylesheet" type="text/css" media="all">
     <title>Document</title>
 </head>
-<body>
+<body class="bg-dark text-info">
+    <br>
+    <br>
     <h3>Enter Details...!</h3>
     <form method="POST" action="/upload" enctype="multipart/form-data">
+        <div class="form-group">
             {% csrf_token %}
-            <table>
+            <table class="table table-borderless">
+                <thead class="text-info">
                 <tr>
                     <td>Title:</td>
                     <td>{{ form.title }}</td>
@@ -24,17 +28,19 @@
              </tr>
              <tr>
                  <td>Document:</td>
-                 <td>{{ form.document }}</td>
+                 <td >{{ form.document }}</td>
              </tr>
              <tr>
-                 <td><input type="submit" value="Click to Upload.."></td>
+                 <td><input type="submit" class=" btn btn-outline-info" value="Click to Upload.."></td>
                 
              </tr>
-            </table>    
+            </thead>
+            </table>   
+        </div> 
     </form>
     <br>
     <center>
-        <a href="/list">Get All Uploads...!</a>
+        <a href="/list" class=" btn btn-outline-info">Get All Uploads...!</a>
     </center>
 </body>
 </html>
