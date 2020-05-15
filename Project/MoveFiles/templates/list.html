@@ -36,20 +36,11 @@
     </table>
     <br>
     <center>
-        <a href="/upload">Add new Document...!</a>
+        <a href="/upload">Add new Document...!</a><br>
+        <a href="/remoterun">Clickhere..!</a>
     </center>
 
-    <br>
-    <h3>Execute Scripts available on the Server...!</h3>
     
-    <form method="POST" action="/run" enctype="multipart/form-data" class="form-inline">
-        {% csrf_token %}
-        <div class="form-group mx-sm-3 mb-2">
-          <label for="inputPassword2" class="sr-only">Script Name</label>
-          <input type="text" class="form-control" name="scriptname" placeholder="Script Name" value="{{scriptname}}">
-        </div>
-        <button type="submit" class="btn btn-primary mb-2">Run</button>
-      </form>
     </div>
 </body>
 </html>

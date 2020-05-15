@@ -1,6 +1,8 @@
 from MoveFiles.models import Documents
-import subprocess
 from subprocess import Popen,PIPE,STDOUT
+import subprocess
+import os
+
 
 class execution():
 
@@ -71,5 +73,32 @@ class execution():
             result = {"status":"Failed","output":str(e)}
 
         return result
+
+
+    def getFileNames(self,par):
+        print("Inside getFilesNames..")
+        filenames =[]
+        i = 0
+        cmd = "find /home/vagrant/scripts -name '*.py'; find /home/vagrant/scripts -name '*.sh' "
+        #cmd =" cd /home/vagrant/scripts; ls"
+        stdin,stdout,stderr=par.exec_command(cmd)
+        op=stdout
+        op=" ".join(op)
+        print(op)
+
+        names=op.splitlines()
+        print(names)
+        
+        for o in names:
+            path=os.path.basename(o)
+            print(path)
+            filenames=filenames + [path]
+
+        print(filenames)   
+        return filenames
+        
+            
+
+       
 
 

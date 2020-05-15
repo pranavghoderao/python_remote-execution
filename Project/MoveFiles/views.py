@@ -24,7 +24,9 @@ def upload(request):
 
 
 def list(request):
+    
     document=Documents.objects.all()
+    
     return render(request,"list.html",{'doc':document})
 
 
@@ -50,6 +52,14 @@ def execute(request,id):
 
     
     return render(request,"result.html",{'res':rest})
+
+def remoterun(request):
+    ex = execution()
+    util = connectServer()
+    par = util.connect()
+    filenames = ex.getFileNames(par)
+    return render(request,"remote.html",{'fnames':filenames})
+
 
 def run(request):
     if request.method == "POST":
