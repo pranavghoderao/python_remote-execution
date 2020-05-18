@@ -69,17 +69,22 @@ def run(request):
         util = connectServer()
         par = util.connect()
         ex = execution()
-
-        loc = "/home/vagrant/scripts/"
-        ext = os.path.splitext(script_name)
-        print(ext[1])
-        if (ext[1] == ".py"):
-            rest =  ex.remoteRunPython(loc,script_name,par)
-        if (ext[1] == ".sh"):
-            rest = ex.remoteRunShell(loc,script_name,par)
-
-    return render(request,"result.html",{'res':rest})
+        filenames = ex.getFileNames(par)
         
+        if script_name in filenames:
+            loc = "/home/vagrant/scripts/"
+            ext = os.path.splitext(script_name)
+            print(ext[1])
+            if (ext[1] == ".py"):
+                rest =  ex.remoteRunPython(loc,script_name,par)
+            if (ext[1] == ".sh"):
+                rest = ex.remoteRunShell(loc,script_name,par)
+
+            return render(request,"result.html",{'res':rest})
+    
+        restf={"status":"failed..","output":f"Script :{script_name} is not present on the server..Enter valid name."}
+    return render(request,"result.html",{'res':restf})
+            
 
 
 

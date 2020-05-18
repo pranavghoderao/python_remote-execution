@@ -50,6 +50,7 @@ class execution():
             op=stdout.readlines()
             op=" ".join(op)
             print(op)
+            
             result = {"status":"Success","output":str(op)}
         
         except Exception as e:
