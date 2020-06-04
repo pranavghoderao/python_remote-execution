@@ -26,10 +26,19 @@
                     {% csrf_token %}
                     <div class="form-group mx-sm-3 mb-2">
                         <label for="inputPassword2" class="sr-only">Script Name</label>
-                        <input type="text" class="form-control" name="scriptname" placeholder="Script Name"
-                            value="{{scriptname}}">
+                        <input type="text" id="name" class="form-control" name="scriptname" placeholder="Script Name"
+                            ">
                     </div>
-                    <button type="submit" class="btn btn-primary mb-2">Run</button>
+                    <button type="submit" class="btn btn-primary mb-2" onclick=" return check()">Run</button>
+                    <script>
+                        function check(){
+                            var a = document.getElementById('name');
+                            console.log(a.value);
+                            if (!confirm("Want to execute " +a.value+ " ?")) {
+                                return false;
+                            }
+                        }
+                    </script>
                 </form>
             </div>
             <div class="col align-content-between position-relative">
@@ -37,11 +46,15 @@
                 <br>
             
                 <h3>Scripts available on server to execute..</h3>
-                <ul class="list-group list-group-flush ">
+                <ul  id="ul" class="list-group list-group-flush ">
                     {% for f in fnames %}
-                    <li class="list-group-item bg-dark">{{ f }}</li>
+                    <li  id="{{ f }}"  class="list-group-item bg-dark"  onclick=" var a = document.getElementById('{{ f }}').innerHTML;
+                        console.log(a);
+                    document.getElementById('name').value=a">{{ f }}</li>
+                   
                     {% endfor %}
                 </ul>
+               
             </div>
         </div>
     </div>
